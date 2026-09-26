@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preload" as="image" href="images/hero-photo.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="css/style.css" data-precedence="default">
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=New+Rocker&amp;display=swap"
+      data-precedence="default">
+    <title>Star Studio Code — DEV RAN</title>
+    <meta name="author" content="DEV RAN">
+    <meta name="robots" content="index, follow">
+    <meta property="og:url" content="https://star-cloud.web.id">
+    <meta name="twitter:site" content="@devran">
+    <meta name="description"
+      content="DEV RAN, Independent Developer — WhatsApp bot, web app, dan eksperimen UI absurd tengah malam. Lihat project, skill, dan hal-hal random lainnya.">
+    <meta property="og:title" content="Star Studio Code — DEV RAN">
+    <meta property="og:description"
+      content="DEV RAN, Independent Developer — WhatsApp bot, web app, dan eksperimen UI absurd tengah malam.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="modulepreload" href="js/main.js">
+    <link rel="modulepreload" href="js/routes.js">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="images/favicon-16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180">
+    <link rel="canonical" href="https://star-cloud.web.id">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <script>
+      try {
+        var t = localStorage.getItem("senzy-xyz-theme");
+        if (t) document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+  </head>
+
+  <body><!--$-->
+    <div class="relative min-h-screen">
+      <div class="grain"></div>
+      <div class="pointer-events-none fixed top-0 left-0 w-80 h-80 rounded-full z-0 hidden md:block"
+        style="background:radial-gradient(circle, var(--c-glow-2, transparent), var(--c-glow-3, transparent) 50%, transparent 75%);filter:blur(20px);mix-blend-mode:multiply">
+      </div>
+      <div class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+        <div class="relative"><button aria-label="Ganti tema warna" aria-expanded="false"
+            class="bg-ink text-cream rounded-full p-3.5 border border-ink/10 transition-transform hover:-translate-y-1 hover:rotate-6 sticker"><svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-palette w-5 h-5" aria-hidden="true">
+              <path
+                d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z">
+              </path>
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+              <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+              <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+              <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+            </svg></button></div>
+      </div>
+      <div class="fixed bottom-5 left-5 z-50"><audio src="media/bgm-music.mp3" loop=""></audio><button
+          aria-label="Toggle Background Music"
+          class="group flex items-center gap-3 px-4 py-3 rounded-full shadow-lg sticker border transition-transform duration-300 hover:-translate-y-1 hover:rotate-2 bg-cream text-ink border-ink/10">
+          <div class="relative flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-disc3 lucide-disc-3 w-5 h-5" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M6 12c0-1.7.7-3.2 1.8-4.2"></path>
+              <circle cx="12" cy="12" r="2"></circle>
+              <path d="M18 12c0 1.7-.7 3.2-1.8 4.2"></path>
+            </svg></div><span
+            class="font-display font-semibold text-xs uppercase tracking-widest hidden sm:inline-block">BGM Off</span>
+          <div class="bg-white/20 rounded-full p-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="lucide lucide-play w-3 h-3 fill-current ml-0.5" aria-hidden="true">
+              <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path>
+            </svg></div>
+        </button></div>
+      <div class="w-full bg-ink text-cream py-2.5 overflow-hidden border-b-2 border-ink relative z-40">
+        <div class="marquee-track font-display font-semibold text-xs sm:text-sm tracking-[0.25em]"><span
+            class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span><span class="px-6 flex items-center gap-6 shrink-0">DEV RAN<svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-star w-3 h-3 text-soft-pink" aria-hidden="true">
+              <path
+                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+              </path>
+            </svg></span></div>
+      </div>
+      <header class="sticky top-0 z-30 bg-cream/80 backdrop-blur-md border-b border-ink/10">
+        <div class="max-w-[1440px] mx-auto px-5 xl:px-10 py-4 flex items-center justify-between"><a href="#home"
+            class="font-display font-bold text-lg uppercase tracking-wide">STAR STUDIO CODE</a>
+          <nav class="flex items-center gap-2 overflow-x-auto no-scrollbar"><a href="#home"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-cream text-ink border-ink/10 sticker"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-house w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                <path
+                  d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+                </path>
+              </svg><span class="hidden sm:inline">Home</span></a><a href="#about"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-lavender/60 text-ink border-ink/10 hover:bg-cream hover:-translate-y-0.5"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-user w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg><span class="hidden sm:inline">About</span></a><a href="#hobby"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-lavender/60 text-ink border-ink/10 hover:bg-cream hover:-translate-y-0.5"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-gamepad2 lucide-gamepad-2 w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <line x1="6" x2="10" y1="11" y2="11"></line>
+                <line x1="8" x2="8" y1="9" y2="13"></line>
+                <line x1="15" x2="15.01" y1="12" y2="12"></line>
+                <line x1="18" x2="18.01" y1="10" y2="10"></line>
+                <path
+                  d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z">
+                </path>
+              </svg><span class="hidden sm:inline">Hobby</span></a><a href="#favorite"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-lavender/60 text-ink border-ink/10 hover:bg-cream hover:-translate-y-0.5"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-star w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <path
+                  d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+                </path>
+              </svg><span class="hidden sm:inline">Favorite</span></a><a href="#skills"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-lavender/60 text-ink border-ink/10 hover:bg-cream hover:-translate-y-0.5"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-code w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <path d="m16 18 6-6-6-6"></path>
+                <path d="m8 6-6 6 6 6"></path>
+              </svg><span class="hidden sm:inline">Skills</span></a><a href="#projects"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-lavender/60 text-ink border-ink/10 hover:bg-cream hover:-translate-y-0.5"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-folder-git2 lucide-folder-git-2 w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <path d="M18 19a5 5 0 0 1-5-5v8"></path>
+                <path
+                  d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5">
+                </path>
+                <circle cx="13" cy="12" r="2"></circle>
+                <circle cx="20" cy="19" r="2"></circle>
+              </svg><span class="hidden sm:inline">Projects</span></a><a href="#contact"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-200 text-xs sm:text-sm font-display font-semibold uppercase tracking-wide bg-lavender/60 text-ink border-ink/10 hover:bg-cream hover:-translate-y-0.5"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              </svg><span class="hidden sm:inline">Contact</span></a></nav>
+        </div>
+      </header>
+
+      <main class="relative z-10">
+
+        <section id="home" class="relative max-w-[1440px] mx-auto px-5 xl:px-10 pt-14 pb-24 overflow-hidden"><svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-sparkles absolute top-2 left-2 text-soft-pink floaty-slow w-[34px] h-[34px]"
+            aria-hidden="true" style="--rot:-8deg">
+            <path
+              d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
+            </path>
+            <path d="M20 2v4"></path>
+            <path d="M22 4h-4"></path>
+            <circle cx="4" cy="20" r="2"></circle>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-star absolute top-20 right-[12%] text-baby-blue fill-baby-blue floaty w-7 h-7"
+            aria-hidden="true" style="--rot:10deg">
+            <path
+              d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+            </path>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-cloud absolute bottom-10 left-[8%] text-lavender fill-lavender floaty-fast w-12 h-12"
+            aria-hidden="true" style="--rot:0deg">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-star absolute bottom-24 right-[6%] text-pastel-yellow fill-pastel-yellow floaty-slow w-[22px] h-[22px]"
+            aria-hidden="true" style="--rot:-15deg">
+            <path
+              d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+            </path>
+          </svg>
+          <div class="grid md:grid-cols-2 gap-12 items-center pt-6">
+            <div class="reveal reveal-left  relative flex justify-center md:justify-start" style="transition-delay:0ms">
+              <div class="tape w-24 -rotate-12 -top-3 left-10 z-10"></div>
+              <div class="polaroid w-[280px] sm:w-[340px] rotate-[-3deg]"><img src="images/hero-photo.jpg" alt="DEV RAN"
+                  loading="eager" fetchpriority="high" class="w-full h-[360px] sm:h-[420px] object-cover rounded-sm">
+                <div class="absolute bottom-5 left-0 right-0 text-center fig-label">DEV RAN — INDEPENDENT DEVELOPER
+                </div>
+              </div>
+              <div
+                class="absolute -bottom-6 -right-4 bg-pastel-yellow border border-ink/10 sticker px-4 py-2 rounded-xl rotate-6 font-display font-bold text-sm flex items-center gap-2 floaty-fast">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-star w-3.5 h-3.5 spin-slow" aria-hidden="true">
+                  <path
+                    d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+                  </path>
+                </svg>LEVEL UP</div>
+            </div>
+            <div class="reveal reveal-right  " style="transition-delay:120ms">
+              <p class="fig-label mb-3">FIG.01 — INTRODUCTION</p>
+              <h1 class="font-display font-bold leading-[0.95] text-5xl sm:text-6xl lg:text-5xl uppercase">DEV RAN</h1>
+              <div class="inline-block mt-3 px-5 py-2 rounded-2xl border transition-colors duration-500"
+                style="background:var(--c-ink);border-color:var(--c-ink)">
+                <h1
+                  class="font-hero font-bold leading-[0.95] text-5xl sm:text-6xl lg:text-7xl uppercase transition-colors duration-500"
+                  style="color:var(--c-soft-pink)">DEV RAN</h1>
+              </div>
+              <div
+                class="mt-6 inline-flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase bg-cream border border-ink/10 sticker rounded-full px-4 py-2">
+                <span
+                  class="flex items-center gap-2 transition-transform hover:-translate-y-0.5 hover:text-soft-pink">DREAM<span
+                    class="text-soft-pink">/</span></span><span
+                  class="flex items-center gap-2 transition-transform hover:-translate-y-0.5 hover:text-soft-pink">BUILD<span
+                    class="text-soft-pink">/</span></span><span
+                  class="flex items-center gap-2 transition-transform hover:-translate-y-0.5 hover:text-soft-pink">BREAK<span
+                    class="text-soft-pink">/</span></span><span
+                  class="flex items-center gap-2 transition-transform hover:-translate-y-0.5 hover:text-soft-pink">REPEAT</span>
+              </div>
+              <p class="mt-6 text-ink-soft text-base sm:text-lg leading-relaxed max-w-md"><strong
+                  class="text-ink">Independent Developer</strong> — ngoprek WhatsApp bot (Baileys), web app, dan
+                plugin-plugin absurd tengah malam. Hidup dari kopi.</p>
+              <div class="mt-8 flex flex-wrap items-center gap-4"><button
+                  class="group inline-flex items-center gap-2 bg-ink text-cream rounded-full px-6 py-3 font-display font-semibold text-sm uppercase tracking-wide hover-pop shine sticker pulse-ring">About
+                  Me<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="transition-transform duration-300 group-hover:translate-y-1">
+                    <path d="M12 5v14"></path>
+                    <path d="m19 12-7 7-7-7"></path>
+                  </svg></button><button
+                  class="inline-flex items-center gap-2 bg-cream text-ink border border-ink/10 rounded-full px-6 py-3 font-display font-semibold text-sm uppercase tracking-wide hover-pop shine sticker">Get
+                  in Touch</button></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="relative max-w-[1440px] mx-auto px-5 xl:px-10 py-20">
+          <div class="tape w-28 rotate-3 -top-3 left-[10%]"></div>
+          <div class="relative">
+            <p class="fig-label mb-3">FIG.02 — ABOUT ME</p>
+            <div class="grid md:grid-cols-[1fr_1.4fr] gap-6">
+              <div
+                class="reveal reveal-left  bg-pastel-yellow border border-ink/10 rounded-blob sticker p-6 flex flex-col justify-between rotate-[-1deg] hover-pop"
+                style="transition-delay:0ms"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-sparkle w-7 h-7 floaty" aria-hidden="true"
+                  style="--rot:0deg">
+                  <path
+                    d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
+                  </path>
+                </svg>
+                <div>
+                  <p class="font-display font-bold text-2xl uppercase leading-tight mt-6">DEV RAN</p>
+                  <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft mt-2">Independent Developer</p>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft mt-6">Dream, Build, Break, Repeat
+                </p>
+              </div>
+              <div
+                class="reveal reveal-right  bg-cream border border-ink/10 rounded-blob sticker p-8 halftone relative rotate-[1deg] hover-pop shine"
+                style="transition-delay:120ms">
+                <div class="absolute -top-4 -left-4 bg-soft-pink rounded-full p-2 text-ink"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-quote w-5 h-5 bounce-soft" aria-hidden="true">
+                    <path
+                      d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                    </path>
+                    <path
+                      d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                    </path>
+                  </svg></div>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase mb-4">About Me</h2>
+                <p class="text-ink-soft text-base sm:text-lg leading-relaxed">Halo! Saya DEV RAN, developer independen
+                  yang fokus di WhatsApp bot (Baileys), React, dan sistem digital custom. Suka bikin hal yang aneh tapi
+                  berfungsi, dan terus belajar tiap hari. Mari terhubung dan ngobrol soal project.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="hobby" class="relative max-w-[1440px] mx-auto px-5 xl:px-10 py-20">
+          <div class="tape w-28 -rotate-6 -top-3 right-[10%]"></div>
+          <div>
+            <div class="reveal reveal-left  mb-3" style="transition-delay:0ms">
+              <p class="fig-label mb-3">FIG.03 — HOBBY</p>
+              <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase flex items-center gap-3">Things I Do
+                Everyday</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div class="reveal   " style="transition-delay:0ms">
+                <div
+                  class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-code w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <path d="m16 18 6-6-6-6"></path>
+                      <path d="m8 6-6 6 6 6"></path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Ngoprek Bot</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:40ms">
+                <div
+                  class="bg-baby-blue border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-zap w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <path
+                        d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                      </path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Ngopi</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:80ms">
+                <div
+                  class="bg-pastel-yellow border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-film w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                      <path d="M7 3v18"></path>
+                      <path d="M3 7.5h4"></path>
+                      <path d="M3 12h18"></path>
+                      <path d="M3 16.5h4"></path>
+                      <path d="M17 3v18"></path>
+                      <path d="M17 7.5h4"></path>
+                      <path d="M17 16.5h4"></path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Nonton Film</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:120ms">
+                <div
+                  class="bg-lavender border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-palette w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <path
+                        d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z">
+                      </path>
+                      <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                      <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                      <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                      <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Desain UI</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:160ms">
+                <div
+                  class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-code w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <path d="m16 18 6-6-6-6"></path>
+                      <path d="m8 6-6 6 6 6"></path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Coding</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:200ms">
+                <div
+                  class="bg-baby-blue border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-smartphone w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                      <path d="M12 18h.01"></path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Scroll Sosmed</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:240ms">
+                <div
+                  class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-headphones w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <path
+                        d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3">
+                      </path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Dengerin Musik</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:280ms">
+                <div
+                  class="bg-pastel-yellow border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-gamepad2 lucide-gamepad-2 w-6 h-6 sm:w-[26px] sm:h-[26px]"
+                      aria-hidden="true">
+                      <line x1="6" x2="10" y1="11" y2="11"></line>
+                      <line x1="8" x2="8" y1="9" y2="13"></line>
+                      <line x1="15" x2="15.01" y1="12" y2="12"></line>
+                      <line x1="18" x2="18.01" y1="10" y2="10"></line>
+                      <path
+                        d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z">
+                      </path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Main Game</p>
+                </div>
+              </div>
+              <div class="reveal   " style="transition-delay:320ms">
+                <div
+                  class="bg-lavender border border-ink/10 rounded-2xl sticker p-5 flex flex-col items-center gap-3 text-center hover-pop shine h-full">
+                  <div class="bg-cream border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-book-open w-6 h-6 sm:w-[26px] sm:h-[26px]" aria-hidden="true">
+                      <path d="M12 7v14"></path>
+                      <path
+                        d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                      </path>
+                    </svg></div>
+                  <p class="font-display font-semibold text-sm uppercase tracking-wide">Baca Buku</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="favorite" class="max-w-[1440px] mx-auto px-5 xl:px-10 py-20 flex flex-col gap-16">
+          <div class="relative">
+            <div class="tape w-24 rotate-6 -top-3 left-[6%]"></div>
+            <div class="reveal reveal-left  mb-3" style="transition-delay:0ms">
+              <p class="fig-label mb-3">FIG.04 — MUSIC</p>
+              <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase flex items-center gap-3"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-music w-7 h-7 text-soft-pink" aria-hidden="true">
+                  <path d="M9 18V5l12-2v13"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <circle cx="18" cy="16" r="3"></circle>
+                </svg>Favorite Artists</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div class="reveal   " style="transition-delay:0ms">
+                <div class="bg-cream border border-ink/10 rounded-2xl sticker overflow-hidden hover-pop group h-full">
+                  <div class="aspect-square w-full bg-lavender overflow-hidden relative"><img
+                      src="images/justin-bieber.jpg" alt="Justin Bieber" loading="lazy"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1">
+                  </div>
+                  <div class="p-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                      height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-disc3 lucide-disc-3 w-4 h-4 text-ink-soft shrink-0 group-hover:spin-slow"
+                      aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M6 12c0-1.7.7-3.2 1.8-4.2"></path>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <path d="M18 12c0 1.7-.7 3.2-1.8 4.2"></path>
+                    </svg>
+                    <p class="font-display font-semibold text-sm truncate">Justin Bieber</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="tape w-28 -rotate-3 -top-3 right-[8%]"></div>
+            <div class="reveal reveal-left  mb-3" style="transition-delay:0ms">
+              <p class="fig-label mb-3">FIG.05 — ANIME</p>
+              <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase flex items-center gap-3"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-tv w-7 h-7 text-soft-pink" aria-hidden="true">
+                  <path d="m17 2-5 5-5-5"></path>
+                  <rect width="20" height="15" x="2" y="7" rx="2"></rect>
+                </svg>Favorite Anime</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="reveal reveal-left  " style="transition-delay:0ms">
+                <div
+                  class="bg-cream border border-ink/10 rounded-2xl sticker p-4 flex items-center gap-4 hover-pop shine group h-full">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 bg-lavender"><img
+                      src="images/horimiya.jpg" alt="Spy X Family" loading="lazy"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></div>
+                  <div class="min-w-0">
+                    <p class="font-mono text-xs text-ink-soft mb-1">01</p>
+                    <p class="font-display font-bold text-sm sm:text-base uppercase truncate">Spy X Family</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills" class="relative max-w-[1440px] mx-auto px-5 xl:px-10 py-20">
+          <div class="tape w-24 -rotate-6 -top-3 left-[14%]"></div>
+          <div class="grid lg:grid-cols-[1.2fr_1fr] gap-10">
+            <div>
+              <div class="reveal reveal-left  mb-3" style="transition-delay:0ms">
+                <p class="fig-label mb-3">FIG.06 — SKILLS</p>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase flex items-center gap-3"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-code w-7 h-7 text-soft-pink" aria-hidden="true">
+                    <path d="m16 18 6-6-6-6"></path>
+                    <path d="m8 6-6 6 6 6"></path>
+                  </svg>Tech Stack</h2>
+              </div>
+              <div class="space-y-5 mt-8">
+                <div>
+                  <div class="flex items-center justify-between mb-2"><span
+                      class="font-display font-semibold uppercase tracking-wide">JavaScript</span><span
+                      class="font-mono text-xs text-ink-soft">98<!-- -->%</span></div>
+                  <div class="h-2 bg-lavender rounded-full overflow-hidden border border-ink/10">
+                    <div class="h-full bg-ink rounded-full bar-fill" style="width:0%;transition-delay:0ms"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2"><span
+                      class="font-display font-semibold uppercase tracking-wide">React</span><span
+                      class="font-mono text-xs text-ink-soft">70<!-- -->%</span></div>
+                  <div class="h-2 bg-lavender rounded-full overflow-hidden border border-ink/10">
+                    <div class="h-full bg-ink rounded-full bar-fill" style="width:0%;transition-delay:50ms"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2"><span
+                      class="font-display font-semibold uppercase tracking-wide">Node.js</span><span
+                      class="font-mono text-xs text-ink-soft">100<!-- -->%</span></div>
+                  <div class="h-2 bg-lavender rounded-full overflow-hidden border border-ink/10">
+                    <div class="h-full bg-ink rounded-full bar-fill" style="width:0%;transition-delay:100ms"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2"><span
+                      class="font-display font-semibold uppercase tracking-wide">Baileys (WA Bot)</span><span
+                      class="font-mono text-xs text-ink-soft">95<!-- -->%</span></div>
+                  <div class="h-2 bg-lavender rounded-full overflow-hidden border border-ink/10">
+                    <div class="h-full bg-ink rounded-full bar-fill" style="width:0%;transition-delay:150ms"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2"><span
+                      class="font-display font-semibold uppercase tracking-wide">Tailwind CSS</span><span
+                      class="font-mono text-xs text-ink-soft">80<!-- -->%</span></div>
+                  <div class="h-2 bg-lavender rounded-full overflow-hidden border border-ink/10">
+                    <div class="h-full bg-ink rounded-full bar-fill" style="width:0%;transition-delay:200ms"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2"><span
+                      class="font-display font-semibold uppercase tracking-wide">Html</span><span
+                      class="font-mono text-xs text-ink-soft">90<!-- -->%</span></div>
+                  <div class="h-2 bg-lavender rounded-full overflow-hidden border border-ink/10">
+                    <div class="h-full bg-ink rounded-full bar-fill" style="width:0%;transition-delay:250ms"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="fig-label mb-3">STATUS</p>
+              <div class="bg-cream border border-ink/10 rounded-blob sticker p-6 halftone">
+                <h3 class="font-display font-bold text-2xl uppercase mb-6">Status</h3>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="reveal   " style="transition-delay:0ms">
+                    <div class="bg-cream border border-ink/10 rounded-xl p-4 sticker hover-pop h-full">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft mb-1">Status</p>
+                      <p class="font-display font-bold text-sm uppercase">Developer</p>
+                    </div>
+                  </div>
+                  <div class="reveal   " style="transition-delay:40ms">
+                    <div class="bg-cream border border-ink/10 rounded-xl p-4 sticker hover-pop h-full">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft mb-1">Focus</p>
+                      <p class="font-display font-bold text-sm uppercase">WA Bot &amp; Web</p>
+                    </div>
+                  </div>
+                  <div class="reveal   " style="transition-delay:80ms">
+                    <div class="bg-cream border border-ink/10 rounded-xl p-4 sticker hover-pop h-full">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft mb-1">Base</p>
+                      <p class="font-display font-bold text-sm uppercase">Bali - Serongga Pondok</p>
+                    </div>
+                  </div>
+                  <div class="reveal   " style="transition-delay:120ms">
+                    <div class="bg-cream border border-ink/10 rounded-xl p-4 sticker hover-pop h-full">
+                      <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft mb-1">Mode</p>
+                      <p class="font-display font-bold text-sm uppercase">Always Online</p>
+                    </div>
+                  </div>
+                  <div class="col-span-2 bg-cream border border-ink/10 rounded-xl p-4 sticker">
+                    <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft mb-2">Currently Exploring
+                    </p>
+                    <div class="flex flex-wrap gap-2"><span
+                        class="bg-baby-blue border border-ink/10 font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full transition-transform hover:-translate-y-0.5 hover:rotate-2">React
+                        Three Fiber</span><span
+                        class="bg-baby-blue border border-ink/10 font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full transition-transform hover:-translate-y-0.5 hover:rotate-2">Vercel</span><span
+                        class="bg-baby-blue border border-ink/10 font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full transition-transform hover:-translate-y-0.5 hover:rotate-2">Termux</span><span
+                        class="bg-baby-blue border border-ink/10 font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full transition-transform hover:-translate-y-0.5 hover:rotate-2">UI/UX
+                        Design</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="relative max-w-[1440px] mx-auto px-5 xl:px-10 py-20">
+          <div class="tape w-28 rotate-3 -top-3 left-[14%]"></div>
+          <div class="reveal reveal-left  mb-3" style="transition-delay:0ms">
+            <p class="fig-label mb-3">FIG.07 — PROJECTS</p>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase flex items-center gap-3"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-folder-git2 lucide-folder-git-2 w-7 h-7 text-soft-pink" aria-hidden="true">
+                <path d="M18 19a5 5 0 0 1-5-5v8"></path>
+                <path
+                  d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5">
+                </path>
+                <circle cx="13" cy="12" r="2"></circle>
+                <circle cx="20" cy="19" r="2"></circle>
+              </svg>Project</h2>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6 mt-8">
+            <div class="reveal reveal-left  " style="transition-delay:0ms"><a href="https://star-cloud.web.id"
+                target="_blank" rel="noreferrer"
+                class="block bg-cream border border-ink/10 rounded-blob sticker overflow-hidden hover-pop shine group h-full">
+                <div class="aspect-[16/10] w-full overflow-hidden border-b border-ink/10"><img
+                    src="images/starmusify-preview.jpg" alt="StarMusify" loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></div>
+                <div class="p-6">
+                  <div class="flex items-start justify-between gap-3">
+                    <h3 class="font-display font-bold text-xl uppercase">StarMusify</h3><svg
+                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-arrow-up-right shrink-0 mt-1 w-[22px] h-[22px] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                      aria-hidden="true">
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </div>
+                  <p class="text-ink-soft text-sm mt-2 leading-relaxed line-clamp-3">Stream musik tanpa batas, tanpa
+                    iklan. Jutaan lagu, playlist keren, dan rekomendasi musik 100% gratis selamanya.</p>
+                  <div class="flex flex-wrap gap-2 mt-4"><span
+                      class="bg-baby-blue border border-ink/10 font-mono text-[11px] uppercase tracking-widest px-3 py-1 rounded-full">Music
+                      Streaming</span><span
+                      class="bg-soft-pink border border-ink/10 font-mono text-[11px] uppercase tracking-widest px-3 py-1 rounded-full">Free</span>
+                  </div>
+                </div>
+              </a></div>
+          </div>
+        </section>
+
+        <section id="contact" class="relative max-w-[1440px] mx-auto px-5 xl:px-10 py-20 pb-28">
+          <div class="tape w-24 rotate-6 -top-3 left-[6%]"></div>
+          <div class="reveal reveal-left  mb-3" style="transition-delay:0ms">
+            <p class="fig-label mb-3">FIG.08 — CONTACT</p>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl uppercase flex items-center gap-3"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail w-7 h-7 text-soft-pink" aria-hidden="true">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              </svg>Let's Connect</h2>
+          </div>
+          <p class="text-ink-soft text-base sm:text-lg max-w-xl mb-10">Hubungi saya melalui platform di bawah ini.</p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="reveal   " style="transition-delay:0ms"><a href="https://github.com/Alterax_V5" target="_blank"
+                rel="noreferrer"
+                class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
+                <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-github w-5 h-5" aria-hidden="true">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                    </path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg></div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft">GitHub</p>
+                  <p class="font-display font-semibold text-sm uppercase truncate">DEV RAN</p>
+                </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-arrow-up-right shrink-0 w-4 h-4 opacity-40 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                  aria-hidden="true">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a></div>
+            <div class="reveal   " style="transition-delay:40ms"><a href="https://t.me/Star_XReal" target="_blank"
+                rel="noreferrer"
+                class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
+                <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-zap w-5 h-5" aria-hidden="true">
+                    <path
+                      d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                    </path>
+                  </svg></div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft">Telegram</p>
+                  <p class="font-display font-semibold text-sm uppercase truncate">Star Studio</p>
+                </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-arrow-up-right shrink-0 w-4 h-4 opacity-40 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                  aria-hidden="true">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a></div>
+            <div class="reveal   " style="transition-delay:80ms"><a href="https://instagram.com/altoffc" target="_blank"
+                rel="noreferrer"
+                class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
+                <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-instagram w-5 h-5" aria-hidden="true">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                  </svg></div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft">Instagram</p>
+                  <p class="font-display font-semibold text-sm uppercase truncate">altoffc</p>
+                </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-arrow-up-right shrink-0 w-4 h-4 opacity-40 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                  aria-hidden="true">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a></div>
+            <div class="reveal   " style="transition-delay:120ms"><a href="https://wa.me/6285188342767" target="_blank"
+                rel="noreferrer"
+                class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
+                <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-smartphone w-5 h-5" aria-hidden="true">
+                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                    <path d="M12 18h.01"></path>
+                  </svg></div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-soft">WhatsApp</p>
+                  <p class="font-display font-semibold text-sm uppercase truncate">DEV RAN</p>
+                </div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-arrow-up-right shrink-0 w-4 h-4 opacity-40 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100"
+                  aria-hidden="true">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-ink text-cream py-10 border-t-2 border-ink">
+        <div class="max-w-[1440px] mx-auto px-5 xl:px-10 text-center">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-cream/70 mb-2">Dream, Build, Break, Repeat</p>
+          <p class="font-display font-semibold text-sm">© <!-- -->2026<!-- --> DEV RAN — Star Studio Code</p>
+        </div>
+      </footer>
+    </div><!--/$-->
+    <script type="module" async="" src="js/main.js"></script>
+  </body>
+</html>
