@@ -21,8 +21,9 @@
       content="DEV RAN, Independent Developer — WhatsApp bot, web app, dan eksperimen UI absurd tengah malam.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="modulepreload" href="js/main.js">
-    <link rel="modulepreload" href="js/routes.js">
+    <!-- main.js & routes.js dinonaktifkan: butuh server TanStack Start, tidak jalan sebagai static hosting -->
+    <!-- <link rel="modulepreload" href="js/main.js"> -->
+    <!-- <link rel="modulepreload" href="js/routes.js"> -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
     <link rel="icon" href="images/favicon-16.png" type="image/png" sizes="16x16">
@@ -825,6 +826,42 @@
         </div>
       </footer>
     </div><!--/$-->
-    <script type="module" async="" src="js/main.js"></script>
+    <!-- <script type="module" async="" src="js/main.js"></script> -->
+    <!-- Script pengganti: memunculkan konten (.reveal) tanpa perlu framework/server -->
+    <script>
+      (function () {
+        // 1. Munculkan semua elemen ".reveal" dengan efek fade-in saat discroll ke layar
+        var items = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15 });
+          items.forEach(function (el) { io.observe(el); });
+        } else {
+          items.forEach(function (el) { el.classList.add("is-in"); });
+        }
+
+        // 2. Aktifkan tombol BGM (play/pause musik latar)
+        var audio = document.querySelector("audio[src='media/bgm-music.mp3']");
+        var bgmBtn = document.querySelector('button[aria-label="Toggle Background Music"]');
+        if (audio && bgmBtn) {
+          var label = bgmBtn.querySelector("span");
+          bgmBtn.addEventListener("click", function () {
+            if (audio.paused) {
+              audio.play().catch(function () {});
+              if (label) label.textContent = "BGM On";
+            } else {
+              audio.pause();
+              if (label) label.textContent = "BGM Off";
+            }
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
