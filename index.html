@@ -727,7 +727,7 @@
           </div>
           <p class="text-ink-soft text-base sm:text-lg max-w-xl mb-10">Hubungi saya melalui platform di bawah ini.</p>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="reveal   " style="transition-delay:0ms"><a href="https://github.com/Alterax_V5" target="_blank"
+            <div class="reveal   " style="transition-delay:0ms"><a href="https://github.com/ranfemboy" target="_blank"
                 rel="noreferrer"
                 class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
                 <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
@@ -750,7 +750,7 @@
                   <path d="M7 17 17 7"></path>
                 </svg>
               </a></div>
-            <div class="reveal   " style="transition-delay:40ms"><a href="https://t.me/Star_XReal" target="_blank"
+            <div class="reveal   " style="transition-delay:40ms"><a href="https://t.me/ini_rannjr" target="_blank"
                 rel="noreferrer"
                 class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
                 <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
@@ -772,7 +772,7 @@
                   <path d="M7 17 17 7"></path>
                 </svg>
               </a></div>
-            <div class="reveal   " style="transition-delay:80ms"><a href="https://instagram.com/altoffc" target="_blank"
+            <div class="reveal   " style="transition-delay:80ms"><a href="https://instagram.com/its_mecakra" target="_blank"
                 rel="noreferrer"
                 class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
                 <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
@@ -794,7 +794,7 @@
                   <path d="M7 17 17 7"></path>
                 </svg>
               </a></div>
-            <div class="reveal   " style="transition-delay:120ms"><a href="https://wa.me/6285188342767" target="_blank"
+            <div class="reveal   " style="transition-delay:120ms"><a href="https://wa.me/iniranzxnjr" target="_blank"
                 rel="noreferrer"
                 class="bg-cream border border-ink/10 rounded-2xl sticker p-5 flex items-center gap-4 hover-pop shine group h-full">
                 <div class="bg-lavender border border-ink/10 rounded-full p-3 wiggle-hover"><svg
@@ -846,7 +846,29 @@
           items.forEach(function (el) { el.classList.add("is-in"); });
         }
 
-        // 2. Aktifkan tombol BGM (play/pause musik latar)
+        // 2. Isi progress bar skill (bar-fill) sesuai persentase saat discroll ke layar
+        var bars = document.querySelectorAll(".bar-fill");
+        bars.forEach(function (bar) {
+          var wrap = bar.parentElement.parentElement;
+          var pctEl = wrap ? wrap.querySelector(".font-mono") : null;
+          var pct = pctEl ? parseInt(pctEl.textContent, 10) : 0;
+          bar.dataset.targetWidth = (isNaN(pct) ? 0 : pct) + "%";
+        });
+        if ("IntersectionObserver" in window) {
+          var barIo = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.style.width = entry.target.dataset.targetWidth;
+                barIo.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.3 });
+          bars.forEach(function (bar) { barIo.observe(bar); });
+        } else {
+          bars.forEach(function (bar) { bar.style.width = bar.dataset.targetWidth; });
+        }
+
+        // 3. Aktifkan tombol BGM (play/pause musik latar)
         var audio = document.querySelector("audio[src='media/bgm-music.mp3']");
         var bgmBtn = document.querySelector('button[aria-label="Toggle Background Music"]');
         if (audio && bgmBtn) {
